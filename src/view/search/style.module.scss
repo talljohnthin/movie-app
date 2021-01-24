@@ -1,0 +1,38 @@
+@import "../../styles/var.scss";
+
+.search_wrapper {
+  padding: 40px 0;
+  .search_group {
+    position: relative;
+
+    input {
+      width: 100%;
+      list-style-type: none;
+      border: 1px solid #c4c4c4;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      border-radius: 2px;
+      align-items: center;
+      padding: 15px 20px;
+      transition: 0.3s;
+      font-size: 16px;
+
+      &:hover,
+      &:focus {
+        outline: none;
+      }
+    }
+    .icon {
+      position: absolute;
+      top: 13px;
+      right: 15px;
+      pointer-events: none;
+    }
+  }
+
+  .no_result {
+    margin-top: 20px;
+    span {
+      font-weight: 700;
+    }
+  }
+}
