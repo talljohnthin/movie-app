@@ -1,4 +1,7 @@
 import React from 'react'
+import { motion } from "framer-motion"
+
+import { pageVariants, pageTransition, movieVariants } from "../../modules/transitions"
 import style from './style.module.scss'
 
 import { useSelector } from 'react-redux'
@@ -12,14 +15,21 @@ const Index = () => {
     const loading = useSelector(state => state.movies.loading)
 
     return <>
-        <div className={style.movie_list}>
+        <motion.div 
+            initial="leave" 
+            animate="enter" 
+            exit="leave" 
+            variants={pageVariants} 
+            transition={pageTransition}
+            className={style.movie_list}
+        >
             <div className="container">
                     <SearchMovies />
-                    {loading ? <div className="loader">Loading...</div> : <div className={style.movie_list_container}>
-                    {movies.length ? movies.map(movie => <Movie key={movie.id} movie={movie} />) : ''}
-                </div> }
+                    {loading ? <div className="loader">Loading...</div> : <motion.div initial="hidden" animate="show" variants={movieVariants} className={style.movie_list_container}>
+                    {movies.length ? movies.map(movie => <Movie  key={movie.id} movie={movie} />) : ''}
+                </motion.div> }
             </div>
-        </div>
+        </motion.div>
     </>
 }
 

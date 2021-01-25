@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { motion } from "framer-motion"
 import { imageBaseURL } from "../../modules/base"
 import { useSelector, useDispatch } from 'react-redux'
 import { useLocation, Redirect } from 'react-router-dom'
 import { useLocalStorage } from "./useLocalStorage"
+
+import { pageVariants, pageTransition } from "../../modules/transitions"
 import style from './style.module.scss'
 
 import { fetchMovie } from '../../modules/actions/movie/movie.actions'
@@ -25,6 +28,9 @@ const Index = () => {
 
     useEffect(() => {
         dispatch(getMovieListFromLocalStorage())
+    }, [dispatch])
+
+    useEffect(() => {
         setIsFavorated(false)
         if(localStorageMovieList) {
           const foundMovieIndex = localStorageMovieList.findIndex(storageMovie => storageMovie.id === movie?.id)
@@ -32,7 +38,7 @@ const Index = () => {
             setIsFavorated(true)
           }
         } 
-    }, [movie, dispatch])
+    }, [movie, localStorageMovieList,  dispatch])
 
     if(location.movieID === undefined) {
         return <Redirect to="/" />
@@ -52,7 +58,14 @@ const Index = () => {
     
 
     return <>
-        <div className={style.details}>
+        <motion.div 
+            initial="leave" 
+            animate="enter" 
+            exit="leave" 
+            variants={pageVariants} 
+            transition={pageTransition} 
+            className={style.details}
+        >
             <div className={style.banner} style={{ backgroundImage: `url(${ imagePath })` }}></div>
             <div className={style.container}>
                 <div className={style.title}>{movie.title}<span></span></div>
@@ -95,7 +108,7 @@ const Index = () => {
                     </div>
                 </div>
             </div> 
-        </div>
+        </motion.div>
     </>
 }
 

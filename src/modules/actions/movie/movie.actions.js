@@ -33,7 +33,6 @@ import { axiosInstance, API_KEY } from "../../base";
       try {
         dispatch(startFetchingMovies())
         const response = await axiosInstance.get(`/movie/popular?api_key=${API_KEY}&language=en-US`);
-        console.log(response.data?.results)
         dispatch(setMovies(response.data?.results))
         dispatch(stopFetchingMovies())
       } catch (error) {
@@ -47,7 +46,6 @@ import { axiosInstance, API_KEY } from "../../base";
     return async (dispatch) => {
       try {
         const response = await axiosInstance.get(`/movie/${movieID}?api_key=${API_KEY}`);
-        console.log(response.data)
         dispatch(setMovie(response.data))
       } catch (error) {
         console.log(error)

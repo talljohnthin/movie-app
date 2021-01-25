@@ -1,11 +1,14 @@
 import React from 'react'
+import { motion } from "framer-motion"
 import { useDispatch } from 'react-redux'
 import { imageBaseURL } from "../../modules/base"
 import { Link } from 'react-router-dom'
 import { useLocalStorage } from '../movies/useLocalStorage'
+import { eachMovieVariants } from "../../modules/transitions"
+import { getMovieListFromLocalStorage } from '../../modules/actions/favorite/favorite.actions'
 import NoImage from "../../assets/images/no-image.jpg"
 import style from './style.module.scss'
-import { getMovieListFromLocalStorage } from '../../modules/actions/favorite/favorite.actions'
+
 
 const Index = ({ movie }) => {
     const dispatch = useDispatch()
@@ -20,7 +23,7 @@ const Index = ({ movie }) => {
     }
 
     return <>
-        <div className={style.movie}>
+        <motion.div variants={eachMovieVariants} className={style.movie}>
             <div className={style.movieContainer}>
                 <div className={ style.img_wrapper }>
                     <img src={ poster_path === null ? NoImage : imagePath } alt={title}/>
@@ -39,7 +42,7 @@ const Index = ({ movie }) => {
                 </div>
                 <span className={ style.title }>{ title }</span>
             </div>
-        </div>
+        </motion.div>
     </>
 }
 

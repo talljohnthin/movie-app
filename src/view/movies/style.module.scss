@@ -1,7 +1,7 @@
 @import "../../styles/var.scss";
 
 .movie_list {
-  min-height: 545px;
+  min-height: 100vh;
   @media (max-width: 991px) {
     min-height: auto;
   }

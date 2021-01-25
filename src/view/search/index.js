@@ -13,11 +13,9 @@ const Index = () => {
 
     return <>
         <div className={style.search_wrapper}>
-            <div className="container">
-                <div className={style.search_group}>
-                    <input name="search" placeholder="Search Movies..." onChange={handleSearch}/>
-                    <Search className={style.icon} color="#8dc63f"/>
-                </div>
+            <div className={style.search_group}>
+                <input name="search" placeholder="Search Movies..." onChange={handleSearch}/>
+                <Search className={style.icon} color="#8dc63f"/>
             </div>
             {noResult && <div className={style.no_result}>Your search - <span>{term}</span> - did not match any movie.</div>}
         </div>

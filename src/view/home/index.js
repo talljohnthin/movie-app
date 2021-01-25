@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import { motion } from "framer-motion"
+import { pageVariants, pageTransition } from "../../modules/transitions"
 import style from './style.module.scss'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,9 +19,16 @@ const Index = () => {
     },[dispatch, movies])
     
     return <>
-        <div className={style.home}>
+        <motion.div 
+            initial="leave" 
+            animate="enter" 
+            exit="leave" 
+            variants={pageVariants} 
+            transition={pageTransition}
+            className={style.home} 
+        >
             <MovieList />
-        </div>
+        </motion.div>
     </>
 }
 
