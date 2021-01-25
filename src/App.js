@@ -14,9 +14,9 @@ const App = () => {
         <Switch location={location} key={location.pathname}>
         <Fragment>
             <AppLayout>
-            <Route exact path={`/`} component={Home} />
-            <Route exact path={`/movie/:id`} component={Details} />
-            <Route exact path={`/favorites`} component={Favorites} />
+                <Route exact path={`/`} component={Home} />
+                <Route exact path={`/movie/:id`} component={Details} />
+                <Route exact path={`/favorites`} component={Favorites} />
             </AppLayout>
         </Fragment>
         </Switch>
