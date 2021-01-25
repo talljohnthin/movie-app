@@ -5,6 +5,4 @@
 - Can favorite movie
 - Can Unfavorite movie
 
-
-
-
+Live Preview: https://talljohnthin-movies.netlify.app
