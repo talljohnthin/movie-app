@@ -8,4 +8,4 @@ function ThankYouPage() {
     )
 }
 
-export default Thank-You-Page
+export default ThankYouPage
