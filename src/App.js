@@ -6,6 +6,7 @@ import AppLayout from "./appLayout";
 import Home from "./view/home";
 import Favorites from "./view/favorites"
 import Details from "./view/movies/details"
+import ThankYouPage from './Thank_You_Page'
 
 const App = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const App = () => {
                 <Route exact path={`/`} component={Home} />
                 <Route exact path={`/movie/:id`} component={Details} />
                 <Route exact path={`/favorites`} component={Favorites} />
+                <Route exact path={`/thank-you`} component={ThankYouPage} />
             </AppLayout>
         </Fragment>
         </Switch>
