@@ -40,6 +40,18 @@ const Index = () => {
         } 
     }, [movie, localStorageMovieList,  dispatch])
 
+    useEffect(() => {
+        window.fbq('track', 'ViewContent', { 
+            content_type: 'product',
+            content_ids: location.movieID,
+            content_name: movie.title,
+            content_category: 'Movie',
+            value: 0.50,
+            currency: 'USD'
+        });
+      // eslint-disable-next-line
+    },[])
+
     if(location.movieID === undefined) {
         return <Redirect to="/" />
     }
